@@ -13,7 +13,7 @@ findUserByUsername(users, 'taco') // undefined
 
 
 function findUserByUsername(usersArray, username) {
-  const newObj = usersArray.find(function(){
+  const newObj = usersArray.find(function(el){
     return el.username === username;
   });
   return newObj;
@@ -37,6 +37,11 @@ function removeUser(usersArray, username) {
   let index = usersArray.findIndex(function(el){
     return el.username === username;
   })
-  let x = usersArray.splice(index,1);
-  return usersArray; 
+  if (index === -1) {
+    return undefined;
+  } else {
+    let x = usersArray.splice(index, 1);
+    return x[0]; 
+  }
+
 }
